@@ -1,0 +1,22 @@
+<div class="container bg-light" style="height: 100vh">
+  <div class="row pt-3">
+    <div *ngIf="paginationLength > 1" class="pagination-wrapper">
+      <app-list-paginator (pageSelected)="setListIndexForPage($event)"
+                          [currentPage]="startIndexOfListForPage / 5"
+                          [paginatorLength]="paginationLength">
+      </app-list-paginator>
+    </div>
+    <div class="col-12 card border-0 shadow flex-row justify-content-around py-2 mb-2 bg-primary text-white">
+      <div>NAME</div>
+      <div>SCORE</div>
+      <div>RANK</div>
+    </div>
+
+    <div *ngFor="let player of list | slice: startIndexOfListForPage: lastIndexOfListForPage"
+         class="border-primary col-12 card border-0 shadow-sm flex-row justify-content-around py-2 my-1">
+      <div>{{player.name}}</div>
+      <div>{{player.score}}</div>
+      <div>{{player.rank}}</div>
+    </div>
+  </div>
+</div>
